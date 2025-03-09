@@ -26,11 +26,29 @@ const Header = () => {
   // Toggle mobile menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    // Prevent body scrolling when menu is open
+    document.body.style.overflow = !isMenuOpen ? 'hidden' : '';
   };
 
   // Close menu when clicking a link (for mobile)
   const closeMenu = () => {
     setIsMenuOpen(false);
+    document.body.style.overflow = '';
+  };
+
+  // Handle navigation to sections
+  const handleNavigation = (e, sectionId) => {
+    e.preventDefault();
+    closeMenu();
+
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const offsetTop = section.offsetTop;
+      window.scrollTo({
+        top: offsetTop - 80, // Adjust for header height
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
@@ -40,7 +58,7 @@ const Header = () => {
           <div className="logo">
             <Link href="/">
               <Image
-                src="/assets/logo.png"
+                src={isScrolled ? "/assets/logo-dark.png" : "/assets/logo-white.png"}
                 alt="SiteSketchSolutions"
                 width={180}
                 height={40}
@@ -67,29 +85,29 @@ const Header = () => {
                 <Link href="/" onClick={closeMenu}>Home</Link>
               </li>
               <li className="nav-item">
-                <Link href="#about" onClick={closeMenu}>About</Link>
+                <a href="#about" onClick={(e) => handleNavigation(e, 'about')}>About</a>
               </li>
               <li className="nav-item">
-                <Link href="#services" onClick={closeMenu}>Services</Link>
+                <a href="#services" onClick={(e) => handleNavigation(e, 'services')}>Services</a>
               </li>
               <li className="nav-item">
-                <Link href="#projects" onClick={closeMenu}>Projects</Link>
+                <a href="#projects" onClick={(e) => handleNavigation(e, 'projects')}>Projects</a>
               </li>
               <li className="nav-item">
-                <Link href="#app" onClick={closeMenu}>App</Link>
+                <a href="#app" onClick={(e) => handleNavigation(e, 'app')}>App</a>
               </li>
               <li className="nav-item">
-                <Link href="#contact" onClick={closeMenu}>Contact</Link>
-              </li>
-              <li className="nav-item cta-item">
-                <Link href="/contact" className="nav-cta-button" onClick={closeMenu}>
-                  Get a Quote
-                </Link>
+                <a href="#contact" onClick={(e) => handleNavigation(e, 'contact')}>Contact</a>
               </li>
             </ul>
           </nav>
         </div>
       </div>
+
+      {/* Overlay for mobile menu */}
+      {isMenuOpen && (
+        <div className="mobile-menu-overlay" onClick={closeMenu}></div>
+      )}
     </header>
   );
 };

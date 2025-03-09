@@ -182,6 +182,7 @@ export default function ContactForm() {
                             <option value="Interior Design">Interior Design</option>
                             <option value="Renovation">Renovation</option>
                             <option value="Consultation">Consultation</option>
+                            <option value="SiteSketch App Demo">SiteSketch App Demo</option>
                         </select>
                     </div>
                 </div>

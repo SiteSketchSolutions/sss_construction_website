@@ -11,7 +11,7 @@ export default function Home() {
         backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/assets/hero.jpeg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        height: '100vh', // Full viewport height
+        height: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
@@ -27,19 +27,19 @@ export default function Home() {
               timeless architectural masterpieces
             </p>
             <div className="hero-buttons">
-              <Link href="/contact" className="primary-button">
+              <Link href="#contact" className="primary-button">
                 Begin Your Legacy <span className="arrow">→</span>
               </Link>
-              <Link href="/portfolio" className="secondary-button">
+              <Link href="#projects" className="secondary-button">
                 Explore Our Portfolio <span className="arrow">→</span>
               </Link>
             </div>
             <div className="hero-stats">
               <div className="stat-item">
-                <p className="stat-value">25+ Years Experience</p>
+                <p className="stat-value">10+ Years Experience</p>
               </div>
               <div className="stat-item">
-                <p className="stat-value">500+ Projects Completed</p>
+                <p className="stat-value">250+ Projects Completed</p>
               </div>
               <div className="stat-item">
                 <p className="stat-value">Award-Winning Designs</p>
@@ -54,13 +54,13 @@ export default function Home() {
         <div className="container">
           <div className="about-header">
             <h2 className="section-label">ABOUT US</h2>
-            <h3 className="section-title">Excellence in Construction Since 2010</h3>
+            <h3 className="section-title">Excellence in Construction Since 2015</h3>
             <div className="divider"></div>
           </div>
           <div className="about-content">
             <div className="about-text">
               <p className="about-description">
-                SiteSketchSolutions Construction has been delivering exceptional construction services and innovative solutions to clients across the country.
+                SiteSketchSolutions Construction has been delivering exceptional construction services and innovative solutions to clients across Bengaluru and Chikkaballapur.
               </p>
               <p className="about-mission">
                 Our commitment to quality, attention to detail, and customer satisfaction has made us a trusted name in the construction industry. We blend traditional craftsmanship with modern technology to create buildings that stand the test of time.
@@ -196,8 +196,8 @@ export default function Home() {
           </div>
 
           <div className="services-cta">
-            <Link href="/projects" className="services-button">
-              Discover Our Projects <span className="arrow">→</span>
+            <Link href="#contact" className="services-button">
+              Discuss Your Project <span className="arrow">→</span>
             </Link>
           </div>
         </div>
@@ -312,10 +312,11 @@ export default function Home() {
           </div>
 
           <div className="app-cta">
-            <button className="cta-button">Request a Demo</button>
+            <Link href="#contact" className="cta-button">Request a Demo</Link>
             <div className="app-download">
-              <p>Download our app:</p>
-              <div className="download-buttons">
+              {/* <strong>Download our app:</strong> */}
+              <p>Our app is <span className="highlight">coming soon!</span> Stay tuned for updates.</p>
+              {/* <div className="download-buttons">
                 <a href="#" className="download-button">
                   <svg xmlns="http://www.w3.org/2000/svg" width="140" height="42" viewBox="0 0 120 40">
                     <path d="M110.135 0H9.535c-.367 0-.73 0-1.095.002-.306.002-.61.008-.919.013A13.215 13.215 0 0 0 5.517.19a6.665 6.665 0 0 0-1.9.627 6.438 6.438 0 0 0-1.62 1.18A6.258 6.258 0 0 0 .82 3.617 6.601 6.601 0 0 0 .195 5.52a12.993 12.993 0 0 0-.179 2.002c-.01.307-.01.615-.015.921V31.56c.005.31.006.61.015.921a12.992 12.992 0 0 0 .18 2.002 6.588 6.588 0 0 0 .624 1.905A6.208 6.208 0 0 0 1.998 38a6.274 6.274 0 0 0 1.618 1.179 6.7 6.7 0 0 0 1.901.63 13.455 13.455 0 0 0 2.004.177c.31.007.613.011.919.011.366.002.728.002 1.095.002h100.6c.36 0 .724 0 1.084-.002.304 0 .617-.004.922-.01a13.279 13.279 0 0 0 2-.178 6.804 6.804 0 0 0 1.908-.63A6.277 6.277 0 0 0 117.666 38a6.395 6.395 0 0 0 1.182-1.614 6.604 6.604 0 0 0 .62-1.905 13.506 13.506 0 0 0 .185-2.002c.004-.31.004-.61.004-.921.008-.364.008-.725.008-1.094V9.536c0-.366 0-.73-.008-1.092 0-.306 0-.614-.004-.92a13.507 13.507 0 0 0-.184-2.003 6.618 6.618 0 0 0-.62-1.903 6.466 6.466 0 0 0-2.799-2.8 6.768 6.768 0 0 0-1.908-.627 13.044 13.044 0 0 0-2-.176c-.305-.005-.618-.011-.922-.013-.36-.002-.725-.002-1.084-.002z" fill="#A6A6A6" />
@@ -331,7 +332,7 @@ export default function Home() {
                 <a href="#" className="download-button">
                   <Image src="/assets/google-play.svg" alt="Get it on Google Play" width={140} height={42} />
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -361,7 +362,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h4>Email Us</h4>
-                    <p>info@sitesketch.com</p>
+                    <p>contact@sssconstructioncompany.com</p>
                   </div>
                 </div>
 
@@ -374,7 +375,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h4>Call Us</h4>
-                    <p>+1 (555) 123-4567</p>
+                    <p>(+91) 9482150598</p>
                   </div>
                 </div>
 
@@ -387,7 +388,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h4>Visit Us</h4>
-                    <p>123 Construction Ave, Building City, 10001</p>
+                    <p>H S Garden, Chikkaballapur, Karnataka 562101</p>
                   </div>
                 </div>
               </div>
