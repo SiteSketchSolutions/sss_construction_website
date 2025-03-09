@@ -852,64 +852,108 @@ a {
 /* App Section Styles */
 .app-section {
   padding: 7rem 0;
-  background-color: #222;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)), url('/assets/app-bg.jpg');
+  background-size: cover;
+  background-position: center;
   color: var(--light-color);
   position: relative;
   overflow: hidden;
 }
 
-.app-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
+/* Add the pattern overlay */
+.app-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-size: 100px 100px;
+  z-index: 0;
 }
 
-.app-info {
-  max-width: 550px;
+.app-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.app-section .section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
 }
 
 .app-section .section-label {
+  display: inline-block;
+  background-color: rgba(212, 175, 55, 0.2);
   color: var(--primary-color);
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .app-section .section-title {
   color: var(--light-color);
-  font-size: 2.8rem;
+  font-size: 3.5rem;
   margin-bottom: 1.5rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.app-section .highlight {
+  color: var(--primary-color);
 }
 
 .app-section .divider {
   background-color: var(--primary-color);
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
+  width: 60px;
+  height: 3px;
 }
 
-.app-description {
+.app-section .section-description {
   font-size: 1.1rem;
   line-height: 1.7;
-  margin-bottom: 3rem;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.app-features-grid {
+/* Main content layout - side by side */
+.app-main-content {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  margin-top: 4rem;
+}
+
+/* Feature cards layout - 2x2 grid as in the design */
+.app-features {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  margin-bottom: 3rem;
+  flex: 1;
 }
 
 .app-feature-card {
   background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  padding: 1.5rem;
+  border-radius: 10px;
+  padding: 2rem;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .app-feature-card:hover {
-  background-color: rgba(255, 255, 255, 0.1);
   transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.app-feature-card .feature-icon {
+.feature-icon {
   width: 50px;
   height: 50px;
   background-color: rgba(212, 175, 55, 0.2);
@@ -917,104 +961,152 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.feature-icon .icon {
+  width: 24px;
+  height: 24px;
   color: var(--primary-color);
 }
 
-.app-feature-card h4 {
-  font-size: 1.2rem;
-  margin-bottom: 0.8rem;
-  color: var(--light-color);
-}
-
-.app-feature-card p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.7);
+/* App showcase with floating notifications */
+.app-showcase-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .app-showcase {
   position: relative;
+  max-width: 400px;
 }
 
 .app-screenshot {
-  border-radius: 30px;
+  border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  position: relative;
-  z-index: 1;
 }
 
 .app-notification {
   position: absolute;
   background-color: white;
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.8rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  gap: 0.8rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   z-index: 2;
-}
-
-.notification-1 {
-  top: 20%;
-  left: -20%;
-  animation: float 4s ease-in-out infinite;
-}
-
-.notification-2 {
-  top: 40%;
-  right: -15%;
-  animation: float 4s ease-in-out infinite 1s;
-}
-
-.notification-3 {
-  bottom: 20%;
-  left: -25%;
-  animation: float 4s ease-in-out infinite 2s;
-}
-
-.notification-icon {
-  width: 40px;
-  height: 40px;
-  background-color: #f0f0f0;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #333;
-}
-
-.payment-icon {
-  background-color: #e6f7ed;
-  color: #28a745;
-}
-
-.update-icon {
-  background-color: #fff4e6;
-  color: #fd7e14;
-}
-
-.notification-content h5 {
-  font-size: 0.9rem;
-  color: #333;
-  margin-bottom: 0.2rem;
-}
-
-.notification-content p {
-  font-size: 0.8rem;
-  color: #666;
+  max-width: 220px;
 }
 
 @keyframes float {
   0% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
   50% {
     transform: translateY(-10px);
   }
   100% {
-    transform: translateY(0px);
+    transform: translateY(0);
+  }
+}
+
+.notification-1 {
+  top: 20%;
+  right: -80px;
+  animation: float 4s ease-in-out infinite;
+}
+
+.notification-2 {
+  top: 40%;
+  left: -80px;
+  animation: float 4s ease-in-out infinite 1s;
+}
+
+.notification-3 {
+  bottom: 20%;
+  right: -60px;
+  animation: float 4s ease-in-out infinite 2s;
+}
+
+/* App CTA section */
+.app-cta {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.cta-button {
+  background-color: var(--primary-color);
+  color: var(--dark-color);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #c19b2a;
+}
+
+.app-download p {
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.download-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.download-button {
+  transition: transform 0.3s ease;
+}
+
+.download-button:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive Styles for App Section */
+@media (max-width: 1200px) {
+  .app-main-content {
+    flex-direction: column;
+  }
+  
+  .app-features {
+    width: 100%;
+    margin-bottom: 4rem;
+  }
+  
+  .notification-1 {
+    right: -40px;
+  }
+  
+  .notification-2 {
+    left: -40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-section .section-title {
+    font-size: 2.5rem;
+  }
+  
+  .app-features {
+    grid-template-columns: 1fr;
+  }
+  
+  .app-notification {
+    display: none;
+  }
+  
+  .download-buttons {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -1222,4 +1314,100 @@ input:focus, select:focus, textarea:focus {
   .form-row {
     grid-template-columns: 1fr;
   }
+}
+
+/* Add these styles for the notification cards */
+.notification-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #f3f4f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4a5568;
+}
+
+.document-icon {
+  background-color: #e6f7ed;
+  color: #0c6b58;
+}
+
+.payment-icon {
+  background-color: #edf2f7;
+  color: #2d3748;
+}
+
+.update-icon {
+  background-color: #fff4e6;
+  color: #c05621;
+}
+
+.notification-content h5 {
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
+  color: #1a202c;
+  font-weight: 600;
+}
+
+.notification-content p {
+  font-size: 0.8rem;
+  color: #4a5568;
+  margin: 0;
+}
+
+/* Contact Form Styles */
+.contact-form-container {
+  position: relative;
+}
+
+.form-success-message,
+.form-error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.form-success-message {
+  background-color: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #166534;
+}
+
+.form-error-message {
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #b91c1c;
+}
+
+.form-hidden {
+  display: none;
+}
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
