@@ -68,8 +68,16 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="footer-bottom">
+                <div className="footer-bottom ">
                     <p>&copy; {new Date().getFullYear()} SSS Construction Company. All rights reserved.</p>
+                    <div className='flex items-center gap-4'>
+                        <Link href="/privacy-policy" className="footer-link">
+                            Privacy Policy
+                        </Link>
+                        <Link href="/terms-of-service" className="footer-link">
+                            Terms of Service
+                        </Link>
+                    </div>
                 </div>
             </div>
         </footer>

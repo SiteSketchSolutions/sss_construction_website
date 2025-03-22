@@ -1,0 +1,60 @@
+.footer {
+    background-color: #f8f9fa;
+    padding: 2rem 1rem;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 3rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.mainContent {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.companyInfo h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.companyInfo p {
+    color: #666;
+    margin-top: 0;
+}
+
+.legalLinks {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.legalLink {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.legalLink:hover {
+    color: #0052a3;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .legalLinks {
+        position: static;
+        margin-top: 1.5rem;
+        justify-content: flex-end;
+    }
+} 

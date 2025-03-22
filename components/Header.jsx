@@ -1,11 +1,16 @@
 "use client";
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+
+  // Only make the header sticky on the home page
+  const isHomePage = pathname === '/';
 
   // Handle scroll event to change navbar style when scrolled
   useEffect(() => {
@@ -17,11 +22,17 @@ const Header = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Only add scroll listener on home page
+    if (isHomePage) {
+      window.addEventListener('scroll', handleScroll);
+    } else {
+      setIsScrolled(false); // Always non-sticky on other pages
+    }
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isHomePage]);
 
   // Toggle mobile menu
   const toggleMenu = () => {
@@ -51,14 +62,19 @@ const Header = () => {
     }
   };
 
+  // Set header classes based on page and scroll state
+  // Add 'white-bg' class for non-home pages
+  const headerClasses = `site-header ${isHomePage && isScrolled ? 'scrolled' : ''} ${!isHomePage ? 'white-bg' : ''} ${isMenuOpen ? 'menu-open' : ''}`;
+
   return (
-    <header className={`site-header ${isScrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
+    <header className={headerClasses}>
       <div className="container">
         <div className="header-inner">
           <div className="logo">
             <Link href="/">
               <Image
-                src={isScrolled ? "/assets/logo-dark.png" : "/assets/logo-white.png"}
+                // Use dark logo on non-home pages or when scrolled on home page
+                src={!isHomePage || isScrolled ? "/assets/logo-dark.png" : "/assets/logo-white.png"}
                 alt="SiteSketchSolutions"
                 width={180}
                 height={40}
@@ -85,19 +101,19 @@ const Header = () => {
                 <Link href="/" onClick={closeMenu}>Home</Link>
               </li>
               <li className="nav-item">
-                <a href="#about" onClick={(e) => handleNavigation(e, 'about')}>About</a>
+                <a href={isHomePage ? "#about" : "/#about"} onClick={isHomePage ? (e) => handleNavigation(e, 'about') : closeMenu}>About</a>
               </li>
               <li className="nav-item">
-                <a href="#services" onClick={(e) => handleNavigation(e, 'services')}>Services</a>
+                <a href={isHomePage ? "#services" : "/#services"} onClick={isHomePage ? (e) => handleNavigation(e, 'services') : closeMenu}>Services</a>
               </li>
               <li className="nav-item">
-                <a href="#projects" onClick={(e) => handleNavigation(e, 'projects')}>Projects</a>
+                <a href={isHomePage ? "#projects" : "/#projects"} onClick={isHomePage ? (e) => handleNavigation(e, 'projects') : closeMenu}>Projects</a>
               </li>
               <li className="nav-item">
-                <a href="#app" onClick={(e) => handleNavigation(e, 'app')}>App</a>
+                <a href={isHomePage ? "#app" : "/#app"} onClick={isHomePage ? (e) => handleNavigation(e, 'app') : closeMenu}>App</a>
               </li>
               <li className="nav-item">
-                <a href="#contact" onClick={(e) => handleNavigation(e, 'contact')}>Contact</a>
+                <a href={isHomePage ? "#contact" : "/#contact"} onClick={isHomePage ? (e) => handleNavigation(e, 'contact') : closeMenu}>Contact</a>
               </li>
             </ul>
           </nav>

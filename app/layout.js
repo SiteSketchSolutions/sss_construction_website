@@ -16,17 +16,17 @@ const playfair = Playfair_Display({
 });
 
 export const metadata = {
-  title: 'SiteSketchSolutions - Excellence in Construction Since 2010',
+  title: 'SiteSketchSolutions - Excellence in Construction Since 2015',
   description: 'SiteSketchSolutions delivers exceptional construction services and innovative solutions, blending traditional craftsmanship with modern technology.',
   keywords: 'construction, building, architecture, craftsmanship, quality construction, innovative building solutions',
   openGraph: {
-    title: 'SiteSketchSolutions - Excellence in Construction Since 2010',
+    title: 'SiteSketchSolutions - Excellence in Construction Since 2015',
     description: 'Where traditional craftsmanship meets innovative technology to create timeless architectural masterpieces',
-    url: 'https://sitesketchsolutions.com',
+    url: 'https://www.sssconstructioncompany.com',
     siteName: 'SiteSketchSolutions',
     images: [
       {
-        url: 'https://sitesketchsolutions.com/og-image.jpg',
+        url: 'https://www.sssconstructioncompany.com/assets/logo-white.png',
         width: 1200,
         height: 630,
         alt: 'SiteSketchSolutions Construction',

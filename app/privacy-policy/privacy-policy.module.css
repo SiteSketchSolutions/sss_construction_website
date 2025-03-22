@@ -1,0 +1,155 @@
+.container {
+  max-width: 1200px;
+  margin: 5rem auto 0 auto;
+  padding: 2rem 1rem;
+  color: #333;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.content {
+  padding: 2rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #2a2a2a;
+  text-align: center;
+}
+
+.lastUpdated {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.introduction {
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.tableOfContents {
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.tableOfContents h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.tableOfContents ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tableOfContents li {
+  margin-bottom: 0.5rem;
+}
+
+.tableOfContents a {
+  color: #0066cc;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.tableOfContents a:hover {
+  color: #0052a3;
+  text-decoration: underline;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.section {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 2rem;
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.sectionHeader {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1.2rem;
+}
+
+.sectionContent h3 {
+  color: #444;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.sectionContent p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.sectionContent ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.sectionContent li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.contactInfo {
+  background-color: #f8f9fa;
+  padding: 1.2rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+.contactInfo p {
+  margin: 0.5rem 0;
+}
+
+.footer {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.backLink {
+  display: inline-block;
+  color: #0066cc;
+  text-decoration: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.backLink:hover {
+  background-color: #f0f0f0;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .content {
+    padding: 1.5rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .sectionHeader {
+    font-size: 1.3rem;
+  }
+} 
