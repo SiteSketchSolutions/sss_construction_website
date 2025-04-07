@@ -177,6 +177,7 @@ export default function ContactForm() {
                             required
                         >
                             <option value="">Select a service</option>
+                            <option value="Turnkey">Turnkey</option>
                             <option value="Architectural Design">Architectural Design</option>
                             <option value="Construction Management">Construction Management</option>
                             <option value="Interior Design">Interior Design</option>

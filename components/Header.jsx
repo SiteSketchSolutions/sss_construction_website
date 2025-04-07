@@ -74,7 +74,7 @@ const Header = () => {
             <Link href="/">
               <Image
                 // Use dark logo on non-home pages or when scrolled on home page
-                src={!isHomePage || isScrolled ? "/assets/logo-dark.png" : "/assets/logo-white.png"}
+                src={!isHomePage || isScrolled ? `${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}/logo-dark.png` : `${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}/logo-white.png`}
                 alt="SiteSketchSolutions"
                 width={180}
                 height={40}
