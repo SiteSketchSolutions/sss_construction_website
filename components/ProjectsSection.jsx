@@ -14,7 +14,7 @@ export default function ProjectsSection() {
         const fetchProjects = async () => {
             try {
                 setIsLoading(true);
-                const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/v1/project/list`);
+                const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/v1/project/list?isFlagship=true`);
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch projects');
