@@ -52,13 +52,16 @@ export default function Home() {
       {/* About Section */}
       <section className="about-section" id="about">
         <div className="container">
-          <div className="about-header">
+          {/* <div className="about-header">
             <h2 className="section-label">ABOUT US</h2>
             <h3 className="section-title">Excellence in Construction Since 2015</h3>
             <div className="divider"></div>
-          </div>
+          </div> */}
           <div className="about-content">
+
             <div className="about-text">
+              <h2 className="section-label">ABOUT US</h2>
+              <h2 className="section-title">Excellence in Construction Since 2015</h2>              <div className="divider"></div>
               <p className="about-description">
                 SiteSketchSolutions Construction has been delivering exceptional construction services and innovative solutions to clients across Bengaluru and Chikkaballapur.
               </p>

@@ -56,9 +56,9 @@ a {
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 2rem;
 }
 
 /* Header Styles - Updated */
@@ -67,8 +67,8 @@ a {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
-  padding: 1rem 0;
+  z-index: 50;
+  padding: 1rem 1.5rem;
   transition: all 0.3s ease;
   background-color: transparent;
 }
@@ -253,11 +253,11 @@ a {
   .mobile-menu-overlay {
     display: block;
   }
-  
+
   .site-header.menu-open {
     background-color: #fff;
   }
-  
+
   .site-header.menu-open .hamburger-line {
     background-color: #333;
   }
@@ -293,7 +293,7 @@ a {
 .hero-content {
   text-align: center;
   margin: 0 auto;
-  margin-top: 10rem;
+  margin-top: 1rem;
   max-width: 48rem;
   padding: 2rem 0;
   position: relative;
@@ -338,7 +338,7 @@ a {
 .primary-button {
   display: inline-block;
   background-color: var(--primary-color);
-  color: var(--dark-color);
+  color: var(--light-color);
   padding: 1rem 2rem;
   border-radius: 50px;
   font-weight: 600;
@@ -402,7 +402,7 @@ a {
 
 /* About Section Styles */
 .about-section {
-  padding: 7rem 0;
+  padding: 6rem 0;
   background-color: var(--light-color);
 }
 
@@ -412,13 +412,13 @@ a {
 
 .section-label {
   color: var(--primary-color);
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: .875rem;
+  font-weight: 500;
   margin-bottom: 0.5rem;
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   font-weight: 700;
   color: var(--dark-color);
   margin-bottom: 1rem;
@@ -433,25 +433,29 @@ a {
 
 .about-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  /* grid-template-columns: 1fr 1fr; */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4rem;
+  align-items: center;
 }
 
+
 .about-description {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   margin-bottom: 1.5rem;
   color: var(--dark-color);
 }
 
 .about-mission {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
   line-height: 1.6;
 }
 
 .features-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 .feature-item {
@@ -595,19 +599,19 @@ a {
   .hero-content h1 {
     font-size: 3rem;
   }
-  
+
   .about-content {
     grid-template-columns: 1fr;
   }
-  
+
   .about-image {
     order: -1;
   }
-  
+
   .footer-content {
     grid-template-columns: 1fr;
   }
-  
+
   .footer-links {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -618,29 +622,29 @@ a {
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .nav-list {
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
   }
-  
+
   .hero-content h1 {
     font-size: 2.5rem;
   }
-  
+
   .hero-content p {
     font-size: 1.1rem;
   }
-  
+
   .features-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .footer-links {
     grid-template-columns: 1fr;
   }
-  
+
   .footer-bottom {
     flex-direction: column;
     gap: 1rem;
@@ -652,15 +656,15 @@ a {
   .hero-content h1 {
     font-size: 2rem;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
-  
+
   .hero-buttons {
     flex-direction: column;
   }
-  
+
   .hero-stats {
     flex-direction: column;
     gap: 1rem;
@@ -947,7 +951,9 @@ a {
   font-weight: 600;
 }
 
-.loading-container, .error-container, .no-projects {
+.loading-container,
+.error-container,
+.no-projects {
   text-align: center;
   padding: 4rem 0;
   color: #666;
@@ -1124,9 +1130,11 @@ a {
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -1197,16 +1205,16 @@ a {
   .app-main-content {
     flex-direction: column;
   }
-  
+
   .app-features {
     width: 100%;
     margin-bottom: 4rem;
   }
-  
+
   .notification-1 {
     right: -40px;
   }
-  
+
   .notification-2 {
     left: -40px;
   }
@@ -1216,15 +1224,15 @@ a {
   .app-section .section-title {
     font-size: 2.5rem;
   }
-  
+
   .app-features {
     grid-template-columns: 1fr;
   }
-  
+
   .app-notification {
     display: none;
   }
-  
+
   .download-buttons {
     flex-direction: column;
     align-items: center;
@@ -1349,7 +1357,9 @@ label {
   color: var(--dark-color);
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   width: 100%;
   padding: 0.75rem 1rem;
   border: 1px solid var(--border-color);
@@ -1359,7 +1369,9 @@ input, select, textarea {
   transition: border-color 0.3s ease;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
   outline: none;
   border-color: var(--primary-color);
 }
@@ -1386,20 +1398,20 @@ input:focus, select:focus, textarea:focus {
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .app-content {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
-  
+
   .app-showcase {
     justify-content: center;
   }
-  
+
   .contact-wrapper {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -1410,28 +1422,28 @@ input:focus, select:focus, textarea:focus {
   .services-grid {
     grid-template-columns: 1fr;
   }
-  
- .projects-grid {
+
+  .projects-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .about-content {
     grid-template-columns: 1fr;
   }
-  
+
   .about-image {
     order: -1;
     margin-bottom: 2rem;
   }
-  
+
   .features-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .app-features {
     grid-template-columns: 1fr;
   }
-  
+
   .form-row {
     grid-template-columns: 1fr;
   }
@@ -1523,6 +1535,7 @@ input:focus, select:focus, textarea:focus {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -1595,14 +1608,17 @@ input:focus, select:focus, textarea:focus {
 
 /* Text color for links in white-bg header */
 .site-header.white-bg .nav-list a {
-  color: #333; /* Adjust the color to match your design */
+  color: #333;
+  /* Adjust the color to match your design */
 }
 
 .site-header.white-bg .nav-list a:hover {
-  color: #0066cc; /* Adjust hover color as needed */
+  color: #0066cc;
+  /* Adjust hover color as needed */
 }
 
 /* Hamburger menu colors for white background */
 .site-header.white-bg .hamburger-line {
-  background-color: #333; /* Dark lines for white background */
+  background-color: #333;
+  /* Dark lines for white background */
 }
