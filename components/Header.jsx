@@ -113,7 +113,10 @@ const Header = () => {
                 <a href={isHomePage ? "#app" : "/#app"} onClick={isHomePage ? (e) => handleNavigation(e, 'app') : closeMenu}>App</a>
               </li>
               <li className="nav-item">
-                <a href={isHomePage ? "#contact" : "/#contact"} onClick={isHomePage ? (e) => handleNavigation(e, 'contact') : closeMenu}>Contact</a>
+                <Link href="/blog" onClick={closeMenu}>Blog</Link>
+              </li>
+              <li className="nav-item">
+                <Link href="/contact" onClick={closeMenu}>Contact</Link>
               </li>
             </ul>
           </nav>

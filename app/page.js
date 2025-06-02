@@ -8,13 +8,15 @@ export default function Home() {
     <main>
       {/* Hero Section */}
       <section className="hero-section" style={{
-        backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/assets/hero.jpeg")',
+        backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/assets/hero.jpeg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backdropFilter: 'blur(5px)',
+        WebkitBackdropFilter: 'blur(5px)'
       }}>
         <div className="container">
           <div className="hero-content">
@@ -342,7 +344,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="contact-section" id="contact">
+      {/* <section className="contact-section" id="contact">
         <div className="container">
           <div className="contact-wrapper">
             <div className="contact-info">
@@ -400,7 +402,7 @@ export default function Home() {
             <ContactForm />
           </div>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }
