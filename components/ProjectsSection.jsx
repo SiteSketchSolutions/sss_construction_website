@@ -110,6 +110,7 @@ export default function ProjectsSection() {
                     </div>
                 ) : error ? (
                     <div className="error-container">
+                        {/* Todo: handle the default project */}
                         <p>Error loading projects: {error}</p>
                     </div>
                 ) : (
