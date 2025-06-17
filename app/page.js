@@ -216,7 +216,7 @@ export default function Home() {
         <div className="container">
           <div className="section-header">
             <h2 className="section-label">MOBILE APPLICATION</h2>
-            <h3 className="section-title">Introducing the <span className="highlight">SiteSketch</span> Mobile App</h3>
+            <h3 className="section-title">Introducing the <span className="highlight">SiteSketchSolutions</span> Mobile App</h3>
             <div className="divider"></div>
             <p className="section-description">
               Our proprietary mobile application gives you complete control over your construction project. Monitor real-time progress, manage documents, track expenses, and communicate with your project team - all from your smartphone or tablet.
@@ -232,7 +232,7 @@ export default function Home() {
                     <path d="M12 6V12L16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </div>
-                <h4>Real-time Project Updates</h4>
+                <h4 >Real-time Project Updates</h4>
                 <p>Stay informed with daily updates and progress reports on your construction project, delivered directly to your mobile device.</p>
               </div>
 
@@ -253,8 +253,8 @@ export default function Home() {
                     <path d="M12 16V12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </div>
-                <h4>Smart Project Insights</h4>
-                <p>Get intelligent analytics and insights to help you make informed decisions about your project, powered by our proprietary algorithms.</p>
+                <h4> Work Schedule Tracking</h4>
+                <p>View your entire project timeline broken down week by week. Track what’s completed, what’s running, and what’s delayed — all at a glance.</p>
               </div>
 
               <div className="app-feature-card">

@@ -1086,6 +1086,10 @@ a {
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
+.app-feature-card h4 {
+  color: var(--primary-color);
+}
+
 .app-feature-card:hover {
   transform: translateY(-5px);
   background-color: rgba(255, 255, 255, 0.1);
