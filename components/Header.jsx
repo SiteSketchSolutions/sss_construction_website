@@ -52,6 +52,12 @@ const Header = () => {
     e.preventDefault();
     closeMenu();
 
+    if (!isHomePage) {
+      // If not on home page, navigate to home page with hash
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
+
     const section = document.getElementById(sectionId);
     if (section) {
       const offsetTop = section.offsetTop;
@@ -101,19 +107,22 @@ const Header = () => {
                 <Link href="/" onClick={closeMenu}>Home</Link>
               </li>
               <li className="nav-item">
-                <a href={isHomePage ? "#about" : "/#about"} onClick={isHomePage ? (e) => handleNavigation(e, 'about') : closeMenu}>About</a>
+                <a href="/#about" onClick={(e) => handleNavigation(e, 'about')}>About</a>
               </li>
               <li className="nav-item">
-                <a href={isHomePage ? "#services" : "/#services"} onClick={isHomePage ? (e) => handleNavigation(e, 'services') : closeMenu}>Services</a>
+                <a href="/#services" onClick={(e) => handleNavigation(e, 'services')}>Services</a>
               </li>
               <li className="nav-item">
-                <a href={isHomePage ? "#projects" : "/#projects"} onClick={isHomePage ? (e) => handleNavigation(e, 'projects') : closeMenu}>Projects</a>
+                <a href="/#projects" onClick={(e) => handleNavigation(e, 'projects')}>Projects</a>
               </li>
               <li className="nav-item">
-                <a href={isHomePage ? "#app" : "/#app"} onClick={isHomePage ? (e) => handleNavigation(e, 'app') : closeMenu}>App</a>
+                <a href="/#app" onClick={(e) => handleNavigation(e, 'app')}>App</a>
               </li>
+              {/* <li className="nav-item">
+                <Link href="/blog" onClick={closeMenu}>Blog</Link>
+              </li> */}
               <li className="nav-item">
-                <a href={isHomePage ? "#contact" : "/#contact"} onClick={isHomePage ? (e) => handleNavigation(e, 'contact') : closeMenu}>Contact</a>
+                <Link href="/contact" onClick={closeMenu}>Contact</Link>
               </li>
             </ul>
           </nav>

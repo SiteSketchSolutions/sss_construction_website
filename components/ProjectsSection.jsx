@@ -45,11 +45,18 @@ export default function ProjectsSection() {
         } else {
             const filtered = projects.filter(project => {
                 const status = project.status.toLowerCase().trim();
-
                 if (activeFilter === 'Ongoing') {
-                    return status.includes('ongoing') || status.includes('on going') || status.includes('on-going') || status.includes('in progress') || status.includes('in-progress');
+                    return status.includes('ongoing') ||
+                        status.includes('on going') ||
+                        status.includes('on-going') ||
+                        status.includes('in progress') ||
+                        status.includes('in-progress') ||
+                        status.includes('in_progress');
                 } else if (activeFilter === 'Completed') {
-                    return status.includes('completed') || status.includes('Completed') || status.includes('done') || status.includes('finished');
+                    return status.includes('completed') ||
+                        status.includes('Completed') ||
+                        status.includes('done') ||
+                        status.includes('finished');
                 }
 
                 return false;
@@ -61,6 +68,30 @@ export default function ProjectsSection() {
 
     const handleFilterClick = (filter) => {
         setActiveFilter(filter);
+    };
+
+    // Helper function to format project status
+    const formatStatus = (status) => {
+        if (!status) return '';
+        const lowerStatus = status.toLowerCase().trim();
+
+        if (lowerStatus.includes('in_progress') ||
+            lowerStatus.includes('in progress') ||
+            lowerStatus.includes('in-progress') ||
+            lowerStatus.includes('ongoing') ||
+            lowerStatus.includes('on going') ||
+            lowerStatus.includes('on-going')) {
+            return 'Ongoing';
+        } else if (lowerStatus.includes('completed') ||
+            lowerStatus.includes('done') ||
+            lowerStatus.includes('finished')) {
+            return 'Completed';
+        }
+
+        // For any other status, capitalize first letter of each word
+        return status.split(' ').map(word =>
+            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+        ).join(' ');
     };
 
     // Helper function to capitalize first letter of each word
@@ -110,6 +141,7 @@ export default function ProjectsSection() {
                     </div>
                 ) : error ? (
                     <div className="error-container">
+                        {/* Todo: handle the default project */}
                         <p>Error loading projects: {error}</p>
                     </div>
                 ) : (
@@ -142,8 +174,8 @@ export default function ProjectsSection() {
                                     <h4 className="project-info-title">{project.name}</h4>
                                     <div className="project-info-meta">
                                         <div className="project-status">
-                                            <span className={`status-badge ${project.status.toLowerCase().includes('ongoing') ? 'ongoing' : project.status.toLowerCase().includes('completed') ? 'completed' : 'other'}`}>
-                                                {formatText(project.status)}
+                                            <span className={`status-badge ${project.status.toLowerCase().includes('ongoing') || project.status.toLowerCase().includes('in_progress') || project.status.toLowerCase().includes('in progress') ? 'ongoing' : project.status.toLowerCase().includes('completed') ? 'completed' : 'other'}`}>
+                                                {formatStatus(project.status)}
                                             </span>
                                         </div>
                                         <div className="project-completion">
