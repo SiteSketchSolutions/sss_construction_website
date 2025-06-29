@@ -118,9 +118,9 @@ const Header = () => {
               <li className="nav-item">
                 <a href="/#app" onClick={(e) => handleNavigation(e, 'app')}>App</a>
               </li>
-              {/* <li className="nav-item">
+              <li className="nav-item">
                 <Link href="/blog" onClick={closeMenu}>Blog</Link>
-              </li> */}
+              </li>
               <li className="nav-item">
                 <Link href="/contact" onClick={closeMenu}>Contact</Link>
               </li>

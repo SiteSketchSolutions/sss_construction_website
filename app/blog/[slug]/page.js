@@ -7,7 +7,7 @@ import './blog-post.css';
 // Generate static params for all blog posts
 export async function generateStaticParams() {
     try {
-        const posts = await getAllBlogPostsAsync();
+        const { blogs: posts } = await getAllBlogPostsAsync();
         return posts.map((post) => ({
             slug: post.slug,
         }));
@@ -106,7 +106,7 @@ export default async function BlogPost({ params }) {
                         src={post.image}
                         alt={post.title}
                         width={1200}
-                        height={600}
+                        height={500}
                         priority
                     />
                 </div>
@@ -127,15 +127,18 @@ export default async function BlogPost({ params }) {
                                 <div className="sidebar-section">
                                     <h3>Tags</h3>
                                     <div className="tags-list">
-                                        {post.tags.map((tag) => (
-                                            <Link
-                                                key={tag}
-                                                href={`/blog/tag/${tag}`}
-                                                className="tag-link"
-                                            >
-                                                {tag}
-                                            </Link>
-                                        ))}
+                                        {post.tagsData && post.tagsData.length > 0 ? (
+                                            post.tagsData.map((tag) => (
+                                                <span
+                                                    key={tag.id}
+                                                    className="tag-link"
+                                                >
+                                                    {tag.name}
+                                                </span>
+                                            ))
+                                        ) : (
+                                            <p>No tags available</p>
+                                        )}
                                     </div>
                                 </div>
                             </aside>
@@ -144,14 +147,13 @@ export default async function BlogPost({ params }) {
                 </div>
 
                 {/* Related Posts */}
-                <section className="related-posts">
+                {/* <section className="related-posts">
                     <div className="container">
                         <h2>Related Articles</h2>
                         <div className="related-posts-grid">
-                            {/* This would be populated with related posts */}
                         </div>
                     </div>
-                </section>
+                </section> */}
             </article>
         );
     } catch (error) {

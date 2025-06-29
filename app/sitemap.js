@@ -4,7 +4,7 @@ export default function sitemap() {
     // Add all your routes here
     const routes = [
         '',
-        // '/blog',
+        '/blog',
         '/contact'
     ].map((route) => ({
         url: `${baseUrl}${route}`,

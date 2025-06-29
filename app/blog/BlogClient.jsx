@@ -1,15 +1,95 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import './blog.css';
-import { getAllBlogPostsAsync } from './data';
+import { getAllBlogPostsAsync, getAllTagsAsync } from './data';
 
-export const metadata = {
-    title: 'Blog | SiteSketchSolutions',
-    description: 'Explore our latest articles on construction, architecture, and sustainable building practices.',
-};
+export default function BlogClient({ initialPosts, initialPagination, initialTags }) {
+    const [posts, setPosts] = useState(initialPosts || []);
+    const [pagination, setPagination] = useState(initialPagination || {});
+    const [tags, setTags] = useState(initialTags || []);
+    const [selectedTagId, setSelectedTagId] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [hasMore, setHasMore] = useState(true);
 
-export default async function BlogPage() {
-    const posts = await getAllBlogPostsAsync();
+    // Load tags on component mount
+    useEffect(() => {
+        const loadTags = async () => {
+            try {
+                const tagsData = await getAllTagsAsync();
+                setTags(tagsData);
+            } catch (error) {
+                console.error('Error loading tags:', error);
+            }
+        };
+
+        if (!initialTags || initialTags.length === 0) {
+            loadTags();
+        }
+    }, [initialTags]);
+
+    // Load more posts
+    const loadMorePosts = async () => {
+        if (isLoading || !hasMore) return;
+
+        setIsLoading(true);
+        try {
+            const nextPage = pagination.page + 1;
+            const { blogs: newPosts, pagination: newPagination } = await getAllBlogPostsAsync(
+                nextPage,
+                5,
+                selectedTagId
+            );
+
+            setPosts(prev => [...prev, ...newPosts]);
+            setPagination(newPagination);
+            setHasMore(newPagination.page < newPagination.totalPages);
+        } catch (error) {
+            console.error('Error loading more posts:', error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    // Filter by tag
+    const filterByTag = async (tagId) => {
+        setIsLoading(true);
+        setSelectedTagId(tagId);
+
+        try {
+            const { blogs: filteredPosts, pagination: newPagination } = await getAllBlogPostsAsync(
+                1,
+                5,
+                tagId
+            );
+
+            setPosts(filteredPosts);
+            setPagination(newPagination);
+            setHasMore(newPagination.page < newPagination.totalPages);
+        } catch (error) {
+            console.error('Error filtering posts:', error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    // Clear filter
+    const clearFilter = async () => {
+        setIsLoading(true);
+        setSelectedTagId(null);
+
+        try {
+            const { blogs: allPosts, pagination: newPagination } = await getAllBlogPostsAsync(1, 5);
+            setPosts(allPosts);
+            setPagination(newPagination);
+            setHasMore(newPagination.page < newPagination.totalPages);
+        } catch (error) {
+            console.error('Error clearing filter:', error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     return (
         <div className="blog-page">
@@ -19,10 +99,23 @@ export default async function BlogPage() {
                     <h1>Our Blog</h1>
                     <p>Insights, trends, and updates from the construction industry</p>
                     <div className="category-buttons">
-                        <button className="category-button active">All</button>
-                        <button className="category-button">Sustainability</button>
-                        <button className="category-button">Technology</button>
-                        <button className="category-button">Design</button>
+                        <button
+                            className={`category-button ${!selectedTagId ? 'active' : ''}`}
+                            onClick={clearFilter}
+                            disabled={isLoading}
+                        >
+                            All
+                        </button>
+                        {tags.map((tag) => (
+                            <button
+                                key={tag.id}
+                                className={`category-button ${selectedTagId === tag.id ? 'active' : ''}`}
+                                onClick={() => filterByTag(tag.id)}
+                                disabled={isLoading}
+                            >
+                                {tag.name}
+                            </button>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -89,6 +182,26 @@ export default async function BlogPage() {
                             </article>
                         ))}
                     </div>
+
+                    {/* Load More Button */}
+                    {hasMore && (
+                        <div className="load-more-container">
+                            <button
+                                onClick={loadMorePosts}
+                                disabled={isLoading}
+                                className="load-more-button"
+                            >
+                                {isLoading ? 'Loading...' : 'Load More Posts'}
+                            </button>
+                        </div>
+                    )}
+
+                    {/* No posts message */}
+                    {posts.length === 0 && !isLoading && (
+                        <div style={{ textAlign: 'center', padding: '3rem 0' }}>
+                            <p>No blog posts found.</p>
+                        </div>
+                    )}
                 </div>
             </section>
 
